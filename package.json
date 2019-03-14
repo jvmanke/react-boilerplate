@@ -1,0 +1,13 @@
+{
+  "name": "react-boilerplate",
+  "version": "1.0.0",
+  "description": "A react boilerplate",
+  "main": "src/index.js",
+  "scripts": {},
+  "keywords": [
+    "React",
+    "Config"
+  ],
+  "author": "João Victor Manke",
+  "license": "MIT"
+}
