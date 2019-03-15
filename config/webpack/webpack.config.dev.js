@@ -24,13 +24,12 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        include: /node_modules/,
-        use: ['style-loader', MiniCssExtractPlugin.loader, 'css-loader'],
-      },
-      {
-        test: /\.css$/,
-        exclude: /node_modules/,
-        use: ['style-loader', MiniCssExtractPlugin.loader, 'css-loader'],
+        use: [
+          'style-loader',
+          MiniCssExtractPlugin.loader,
+          { loader: 'css-loader', options: { importLoaders: 1 } },
+          'postcss-loader',
+        ],
       },
       {
         test: /\.(html)$/,
