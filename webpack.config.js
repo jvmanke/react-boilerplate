@@ -2,6 +2,7 @@ const path = require('path')
 
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const HTMLWebpackPlugin = require('html-webpack-plugin')
+const CompressionPlugin = require('compression-webpack-plugin')
 
 module.exports = {
   entry: './src/index.js',
@@ -41,5 +42,6 @@ module.exports = {
       template: './src/index.html',
       filename: 'index.html',
     }),
+    new CompressionPlugin({ exclude: /\.(html)$/, deleteOriginalAssets: true }),
   ],
 }
