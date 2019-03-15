@@ -4,8 +4,10 @@
   "description": "A react boilerplate",
   "main": "src/index.js",
   "scripts": {
+    "start": "node dist-server/server.js",
     "dev": "node devServe.js",
     "build": "webpack --mode production",
+    "build:server": "webpack --mode production --config config/webpack/webpack.config.server.js",
     "lint": "npm run lint:eslint && npm run lint:stylelint",
     "lint:eslint": "eslint src *.js",
     "lint:stylelint": "stylelint src/**/*.js",
@@ -52,6 +54,7 @@
     "webpack": "^4.29.6",
     "webpack-cli": "^3.2.3",
     "webpack-dev-middleware": "^3.6.1",
-    "webpack-hot-middleware": "^2.24.3"
+    "webpack-hot-middleware": "^2.24.3",
+    "webpack-node-externals": "^1.7.2"
   }
 }
