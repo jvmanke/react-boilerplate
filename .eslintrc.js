@@ -1,6 +1,6 @@
 module.exports = {
   parser: 'babel-eslint',
-  extends: ['airbnb', 'prettier', 'prettier/react'],
+  extends: ['airbnb', 'prettier', 'prettier/react', 'pluing:jest/recomended'],
   rules: {
     semi: ['error', 'never'],
     'no-console': [
@@ -30,7 +30,11 @@ module.exports = {
     'jsx-a11y/href-no-hash': 0,
     'react/jsx-filename-extension': 'off',
   },
+  plugins: [
+    "jest",
+  ],
   env: {
     browser: true,
+    "jest/globals": true,
   },
 }

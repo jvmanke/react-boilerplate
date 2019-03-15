@@ -16,5 +16,4 @@ jobs:
           - run:
               name: Test Source Code
               command: |
-                npm test
-
+                JEST_JUNIT_OUTPUT="$CIRCLE_TEST_REPORTS/junit.xml" npm test -- -w 1 --reporters=default --reporters=jest-junit

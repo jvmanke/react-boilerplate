@@ -1,6 +1,8 @@
 #!/bin/sh
 cd "$(pwd)/${1}"
 
+[ -d "${2}" ] && { echo "Component already exists!"; exit 1; }
+
 mkdir ${2}
 cd ${2}
 
@@ -36,4 +38,21 @@ Object.keys(allExports)
 export const helpers = toBeExported
 
 export default defaultExport
+EOF
+
+testFile="${2}.test.js"
+touch ${testFile}
+cat << EOF > ${testFile}
+/* eslint-disable import/no-extraneous-dependencies */
+import React from 'react'
+import { shallow } from 'enzyme'
+
+import ${2} from './${2}'
+
+describe('${2}', () => {
+  it('Should show boilerplate text', () => {
+    const component = shallow(<${2} />)
+    expect(component.text()).toBe('${2}')
+  })
+})
 EOF
