@@ -1,25 +1,35 @@
 const path = require('path')
 
+const webpack = require('webpack')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const HTMLWebpackPlugin = require('html-webpack-plugin')
 
+const resolve = require('./utils/resolve')
+
 module.exports = {
-  entry: './src/index.js',
+  resolve,
+  devtool: 'cheap-module-eval-source-map',
+  entry: ['webpack-hot-middleware/client?reload=true', './src/index'],
   output: {
     path: path.join(__dirname, 'dist'),
     filename: 'main.js',
+    publicPath: '/static/',
   },
   module: {
     rules: [
       {
-        test: /\.(js|jsx)$/,
+        test: /\.js$/,
+        loader: 'babel-loader',
         exclude: /node_modules/,
-        use: {
-          loader: 'babel-loader',
-        },
       },
       {
-        test: /\.(css)$/,
+        test: /\.css$/,
+        include: /node_modules/,
+        use: ['style-loader', MiniCssExtractPlugin.loader, 'css-loader'],
+      },
+      {
+        test: /\.css$/,
+        exclude: /node_modules/,
         use: ['style-loader', MiniCssExtractPlugin.loader, 'css-loader'],
       },
       {
@@ -29,6 +39,11 @@ module.exports = {
     ],
   },
   plugins: [
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify('development'),
+      'process.env.DEVTOOLS_WINDOW': JSON.stringify(process.env.DEVTOOLS_WINDOW),
+    }),
     new MiniCssExtractPlugin({ filename: 'styles.css' }),
     new HTMLWebpackPlugin({
       inject: true,
