@@ -1,20 +1,20 @@
 version: 2.0
 jobs:
-  build:
-    docker:
-      - image: circleci/node:10
-    steps:
-      - checkout
-      - run:
-        name: Install Dependencies
-        command: |
-          npm install
-      - run:
-        name: Check For Linting Errors
-        command: |
-          npm run lint
-      - run:
-        name: Test Source Code
-        command: |
-          npm test
+    build:
+        docker:
+          - image: circleci/node:10
+        steps:
+          - checkout
+          - run:
+              name: Install Dependencies
+              command: |
+                npm install
+          - run:
+              name: Check For Linting Errors
+              command: |
+                npm run lint
+          - run:
+              name: Test Source Code
+              command: |
+                npm test
 
