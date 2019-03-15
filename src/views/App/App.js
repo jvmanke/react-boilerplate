@@ -2,8 +2,8 @@ import React from 'react'
 
 import './App.css'
 
-function App(props) {
-  return <div>MyApp</div>
+function App() {
+  return <>App</>
 }
 
 export default App

@@ -2,6 +2,8 @@ import React from 'react'
 
 import './GeneralComponent.css'
 
-function GeneralComponent(props) {}
+function GeneralComponent() {
+  return <>GeneralComponent</>
+}
 
 export default GeneralComponent

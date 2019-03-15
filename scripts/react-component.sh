@@ -14,16 +14,26 @@ import React from 'react'
 
 import './${cssFile}'
 
-function ${2}(props) {
-
+function ${2}() {
+  return <>${2}</>
 }
 
 export default ${2}
 EOF
 
-touch package.json
-cat << EOF > package.json
-{
-  "main": "${2}.js"
-}
+touch index.js
+cat << EOF > index.js
+import defaultExport, * as allExports from './${2}'
+
+const toBeExported = {}
+
+Object.keys(allExports)
+  .filter(key => key !== 'default')
+  .forEach(key => {
+    toBeExported[key] = allExports[key]
+  })
+
+export const helpers = toBeExported
+
+export default defaultExport
 EOF

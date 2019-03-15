@@ -38,9 +38,19 @@ const reducer = (state = initalState, { type, payload }) => {
 export default reducer
 EOF
 
-touch package.json
-cat << EOF > package.json
-{
-  "main": "reducers.js"
-}
+touch index.js
+cat << EOF > index.js
+import defaultExport, * as allExports from './reducer'
+
+const toBeExported = {}
+
+Object.keys(allExports)
+  .filter(key => key !== 'default')
+  .forEach(key => {
+    toBeExported[key] = allExports[key]
+  })
+
+export const helpers = toBeExported
+
+export default defaultExport
 EOF
