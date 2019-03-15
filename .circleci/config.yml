@@ -1,6 +1,6 @@
 version: 2.0
 jobs:
-  Lint-and-Test:
+  build:
     docker:
       - image: circleci/node:10
     steps:
