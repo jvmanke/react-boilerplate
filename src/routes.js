@@ -1,10 +1,13 @@
-import React from 'react'
+import React, { Suspense } from 'react'
 
+import RouteFallbackRoute from './views/RouteFallback'
 import AppRoute from './views/App'
 
 function routes() {
   return (
-    <AppRoute path='/' />
+    <Suspense fallback={<RouteFallbackRoute />}>
+      <AppRoute path='/' />
+    </Suspense>
   )
 }
 

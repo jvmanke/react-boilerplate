@@ -3,6 +3,7 @@ const path = require('path')
 
 const express = require('express')
 const webpack = require('webpack')
+const historyApiFallback = require('connect-history-api-fallback')
 const webpackDevMiddleware = require('webpack-dev-middleware')
 const webpackHotMiddleware = require('webpack-hot-middleware')
 
@@ -12,6 +13,8 @@ const ip = '127.0.0.1'
 const port = process.env.PORT || 5000
 const app = express()
 const compiler = webpack(config)
+
+app.use(historyApiFallback({ verbose: false }))
 
 app.use(
   webpackDevMiddleware(compiler, {
@@ -43,6 +46,5 @@ app.listen(port, ip, err => {
     return
   }
 
-  console.info(path.join(__dirname, 'dist/index.html'))
   console.info('\x1b[32m', `[Development] Express is running on http://${ip}:${port}`, '\x1b[0m')
 })

@@ -25,12 +25,10 @@ EOF
 
 touch index.js
 cat << EOF > index.js
-import React from 'react'
+import React, { lazy } from 'react'
 import { Route } from 'react-router-dom'
 
-import lazyImport from '../../utils/lazyImport'
-
-const App = lazyImport('./${2}')
+const ${2} = lazy(() => import('./${2}'))
 
 function ${2}Route(props) {
   return <Route {...props}><${2} /></Route>
