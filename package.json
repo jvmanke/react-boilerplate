@@ -14,7 +14,7 @@
     "lint:eslint": "eslint src *.js",
     "lint:stylelint": "stylelint src/**/*.js",
     "component": "bash ./scripts/react-component.sh src/components",
-    "view": "bash ./scripts/react-component.sh src/views",
+    "view": "bash ./scripts/router-view.sh src/views",
     "reducer": "bash ./scripts/redux-reducer.sh src/modules"
   },
   "keywords": [
@@ -30,6 +30,7 @@
     "react": "^16.8.4",
     "react-dom": "^16.8.4",
     "react-redux": "^6.0.1",
+    "react-router-dom": "^4.4.0",
     "redux": "^4.0.1",
     "redux-define": "^1.1.1",
     "redux-thunk": "^2.3.0",

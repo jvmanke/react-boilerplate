@@ -1,13 +1,12 @@
-import defaultExport, * as allExports from './App'
+import React from 'react'
+import { Route } from 'react-router-dom'
 
-const toBeExported = {}
+import lazyImport from '../../utils/lazyImport'
 
-Object.keys(allExports)
-  .filter(key => key !== 'default')
-  .forEach(key => {
-    toBeExported[key] = allExports[key]
-  })
+const App = lazyImport('./App')
 
-export const helpers = toBeExported
+function AppRoute(props) {
+  return <Route {...props}><App /></Route>
+}
 
-export default defaultExport
+export default AppRoute
