@@ -16,6 +16,6 @@ jobs:
           - run:
               name: Test Source Code
               command: |
-                npm test -- --ci --runInBand -w 1 --reporters=default --reporters=jest-junit
+                npm test -- --ci --runInBand --reporters=default --reporters=jest-junit
               environment:
                 JEST_JUNIT_OUTPUT: "reports/junit/js-test-results.xml"
