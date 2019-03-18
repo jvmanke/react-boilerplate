@@ -9,6 +9,7 @@ const resolve = require('./utils/resolve')
 module.exports = {
   resolve,
   devtool: 'cheap-module-eval-source-map',
+  mode: 'development',
   entry: ['webpack-hot-middleware/client?reload=true', './src/index'],
   output: {
     path: path.join(__dirname, 'dist'),

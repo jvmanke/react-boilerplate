@@ -25,19 +25,8 @@ EOF
 
 touch index.js
 cat << EOF > index.js
-import defaultExport, * as allExports from './${2}'
-
-const toBeExported = {}
-
-Object.keys(allExports)
-  .filter(key => key !== 'default')
-  .forEach(key => {
-    toBeExported[key] = allExports[key]
-  })
-
-export const helpers = toBeExported
-
-export default defaultExport
+export * from './${2}' // eslint-disable-line import/export
+export { default } from './${2}'
 EOF
 
 testFile="${2}.test.js"

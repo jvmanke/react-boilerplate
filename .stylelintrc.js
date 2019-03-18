@@ -1,5 +1,6 @@
 module.exports = {
   extends: 'stylelint-config-standard',
+  ignoreFiles: '**/*.js',
   rules: {
     'property-no-unknown': [
       true,
